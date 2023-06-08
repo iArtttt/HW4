@@ -308,7 +308,7 @@ namespace Turnip
         private bool WasPopSucced(Plant plant)
         {
             FullPower += Persons.Peek().Power;
-            return FullPower >= plant.Weight? true : false;
+            return FullPower >= plant.Weight;
         }
 
 
