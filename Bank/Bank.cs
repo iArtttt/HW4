@@ -35,9 +35,9 @@ namespace Bank
         }
         public void ConnectBill(Client client, int bill)
         {
-            if (Clients.Contains(client) && BankBills.ContainsKey(bill))
+            if (Clients.Contains(client) && BankBills.TryGetValue(bill, out Bill value))
             {
-                Clients[Clients.IndexOf(client)].PersonalBills.Add(bill, BankBills[bill]);
+                Clients[Clients.IndexOf(client)].PersonalBills.Add(bill, value);
             }
             else
             {
@@ -57,7 +57,7 @@ namespace Bank
         {
             foreach (Bill bill in BankBills.Values)
             {
-                Console.WriteLine($"Bill# {bill.ID}\nBill persent : {bill.Persent}");
+                Console.WriteLine($"Bill # {bill.ID}\nBill persent : {bill.Persent}");
             }
         }
         public void SetPercent(decimal newPercent, int bill)
