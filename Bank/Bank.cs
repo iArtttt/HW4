@@ -11,6 +11,8 @@ namespace Bank
         public List<Client> Clients = new List<Client>();
         public List<Bill> Bills { get; set;}
 
+
+
         public void OpenBill()
         {
             Bill bill = new Bill();

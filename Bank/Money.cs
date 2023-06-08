@@ -9,7 +9,7 @@ namespace Bank
     internal struct Money
     {
         public int UAH { get; set; }
-        public float Penny { get; set; }
+        public byte Penny { get; set; }
 
 
         public Money ()
@@ -42,7 +42,7 @@ namespace Bank
             float uahf = money1 - (int)money1;
             int uah = money.UAH + (int)money1;
             float penny = money.Penny + uahf;
-            if (penny >= 1 ) 
+            if (penny >= 100 ) 
             {
                 uah += 1;
                 penny -= 1;
@@ -54,7 +54,7 @@ namespace Bank
             float uahf = money1 - (int)money1;
             int uah = money.UAH - (int)money1;
             float penny = money.Penny - uahf;
-            if (penny <= 1 ) 
+            if (penny <= 100 ) 
             {
                 uah -= 1;
                 penny += 1;
@@ -63,6 +63,20 @@ namespace Bank
         }
         public static Money operator - (Money money, Money money1)
         {
+            int uah = money.UAH - money1.UAH;
+            float penny = money.Penny * 0.01f - money1.Penny * 0.01f;
+
+            if(penny < 0)
+            {
+                uah -= 1;
+                penny += 1;
+            }
+
+            return new Money (uah, penny);
+        }
+        public static decimal operator (decimal) (Money money)
+        {
+            decimal result = 554.4455; 
             int uah = money.UAH - money1.UAH;
             float penny = money.Penny * 0.01f - money1.Penny * 0.01f;
 
