@@ -34,11 +34,11 @@ namespace Turnip.Persons
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write($"{Name} ");
             Console.ResetColor();
-            Console.Write($"and I pulls this ");
+            Console.Write($"and I`ll pull this ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write($"{plant.PlantName} ");
             Console.ResetColor();
-            Console.Write($"off\n");
+            Console.Write($"out\n");
         }
 
         public virtual string CallForHelp()

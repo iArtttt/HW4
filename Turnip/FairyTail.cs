@@ -109,7 +109,7 @@ namespace Turnip
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(e.Message);
-                    Console.WriteLine("Was created default person!");
+                    Console.WriteLine("Was created a default person!");
                     Console.ResetColor();
                     Persons.Enqueue(new OwnPerson());
                     continue;
@@ -119,10 +119,10 @@ namespace Turnip
             Console.Write($"What plant would you like to plant?\n");
             string plantName = Console.ReadLine();
             Console.Write($"How heavy is your plant ( number )?\n");
-            int plantVaight = int.TryParse(Console.ReadLine(), out int weight) ? weight : 15;
+            int plantVaight = int.TryParse(Console.ReadLine(), out int vaight) ? vaight : 5;
             Plant plant = new Plant(plantName, plantVaight);
             if (Persons.Count == 0)
-                throw new Exception("No persons for this story (0_0)");
+                throw new Exception("No characters for this story (0_0)");
 
             Story(plant);
         }
@@ -130,17 +130,17 @@ namespace Turnip
         {
             Console.Write($"\nThis is a realy sad...\n");
             Thread.Sleep(3000);
-            Console.Write($"Or mabe NOT?...\n");
+            Console.Write($"Or maybe NOT?...\n");
             Thread.Sleep(3000);
             Console.Write($"Story about the poor plant...\n");
             Thread.Sleep(3000);
-            Console.Write($"And it hard life.........\n");
+            Console.Write($"And its hard life.........\n");
             Thread.Sleep(3000);
             Console.Write($"One day the ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write($"{Persons.Peek().Personality} {Persons.Peek().Name} ");
             Console.ResetColor();
-            Console.Write($"plant the ");
+            Console.Write($"planted the ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write($"{plant.PlantName}");
             Console.ResetColor();
@@ -149,9 +149,9 @@ namespace Turnip
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write($"{plant.PlantName} ");
             Console.ResetColor();
-            Console.Write($"grow and grow and grow and grow and grow and grow and grow and growwwwwwwwwwwwwwwwwww.....................\n");
+            Console.Write($"grew and grew and grew and grew and grew and grew and grew and grewwwwwwwwwwwwwwwwwww.....................\n");
             Thread.Sleep(5000);
-            Console.Write($"Grow a lot. And grew up in big, ");
+            Console.Write($"Grew a lot. And grew up in big, ");
             Thread.Sleep(4000);
             Console.Write($"fat POTATOOOOO...");
             Thread.Sleep(2000);
@@ -165,13 +165,13 @@ namespace Turnip
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write($"{Persons.Peek().Name} ");
             Console.ResetColor();
-            Console.Write($"start pull ");
+            Console.Write($"started pulling ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write($"{plant.PlantName}");
             Console.ResetColor();
-            Console.Write($", pulls pulls, pulls pulls and...\n");
+            Console.Write($", pulled pulled, pulled pulled and...\n");
             Thread.Sleep(6000);
-            Console.Write($"pulls pulls, pulls for a long time...\n");
+            Console.Write($"pulled pulled, pulled for a long time...\n");
             Thread.Sleep(4000);
             if (PopTry(plant))
                 return;
@@ -182,7 +182,7 @@ namespace Turnip
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write($"{Persons.Peek().Personality} {Persons.Peek().Name} ");
                 Console.ResetColor();
-                Console.Write($"comes and say...\n");
+                Console.Write($"came and said...\n");
                 Thread.Sleep(4000);
                 Persons.Peek().Pull(plant);
                 Thread.Sleep(2000);
@@ -197,10 +197,10 @@ namespace Turnip
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write($"{plant.PlantName}");
                 Console.ResetColor();
-                Console.Write($", pulls pulls, pulls pulls and...\n");
-                Thread.Sleep(4000);
-                Console.Write($"pulls pulls, pulls for a long time...\n");
+                Console.Write($", pulled pulled, pulled pulled and...\n");
                 Thread.Sleep(3000);
+                Console.Write($"pulled pulled, pulled for a long time...\n");
+                Thread.Sleep(2000);
 
                 if (PopTry(plant))
                     return;
@@ -208,9 +208,9 @@ namespace Turnip
             Call();
             Console.Write($"But...");
             Thread.Sleep(3000);
-            Console.Write($"noone comes\n");
+            Console.Write($"nobody came\n");
             Thread.Sleep(3000);
-            Console.Write($"So {plant.PlantName} stay in the ");
+            Console.Write($"So {plant.PlantName} remained in the ");
             Thread.Sleep(5000);
             Console.Beep();
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -234,7 +234,7 @@ namespace Turnip
             Console.Write($"HA-HA-HA\n");
             Console.ResetColor();
             Thread.Sleep(2000);
-            Console.Write($"\nMaybe next time somesing will change");
+            Console.Write($"\nMaybe next time something will change");
             Thread.Sleep(1000);
             Console.Write($".");
             Thread.Sleep(1000);

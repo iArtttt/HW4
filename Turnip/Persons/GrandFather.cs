@@ -9,7 +9,7 @@ namespace Turnip.Persons
     internal class GrandFather : Person
     {
 
-        public GrandFather() : base("GrandFather", "Oleg", "Fine it`s too heavy, who need my money?!?!", 5) { }
+        public GrandFather() : base("GrandFather", "Oleg", "Fine it`s too heavy, who wants my money?!?!", 5) { }
 
         public override void Pull(Plant plant)
         {
@@ -17,7 +17,7 @@ namespace Turnip.Persons
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write($"{Name} ");
             Console.ResetColor();
-            Console.Write($"and I'll take all money from this ");
+            Console.Write($"and I'll get a lot of money from selling this ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write($"{plant.PlantName}\n");
             Console.ResetColor();

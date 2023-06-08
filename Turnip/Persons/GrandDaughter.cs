@@ -8,15 +8,15 @@ namespace Turnip.Persons
 {
     internal class GrandDaughter : Person
     {
-        public GrandDaughter() : base("Granddaughter", "Zinoida", "Aaaah, come to me darling.",3) { }
+        public GrandDaughter() : base("Granddaughter", "Zinoida", "Ah, come to me darling.",3) { }
 
         public override void Pull(Plant plant)
         {
-            Console.Write($"Why am I, goddess ");
+            Console.Write($"Why do I, the goddess ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write($"{Name} ");
             Console.ResetColor();
-            Console.Write($"pulls this ");
+            Console.Write($"have to pull this ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write($"{plant.PlantName}?!\n");
             Console.ResetColor();
