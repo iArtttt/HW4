@@ -8,30 +8,61 @@ namespace Bank
 {
     internal class Bank
     {
-        public List<Client> Clients = new List<Client>();
-        public List<Bill> Bills { get; set;}
+        private string KeyToChangePersent = "h*J^~9:#1 @!D}_+Mh1 gh9|'G]/G1>(&@&/  L&p  s/1q()_=_{}d?w{]*-+D#@H)!";
+        public readonly List<Client> Clients = new List<Client>();
+        private Dictionary<int, Bill> BankBills = new Dictionary<int, Bill>();
 
 
 
         public void OpenBill()
         {
-            Bill bill = new Bill();
-            Bills.Add(bill);
-        }
-        public void ConnectBill(Client client, Bill bill)
-        {
-            Clients[Clients.IndexOf(client)].Bills.Add(bill);
+            int billKey = new Random().Next();
+            Bill bill = new Bill(billKey);
+            Console.WriteLine(billKey);
+            BankBills.Add(billKey,bill);
         }
         public void ClientAdd(Client client)
         {
             if (!Clients.Contains(client))
                 Clients.Add(client);
-            //Clients.Add(new Client());
+            else
+                Console.WriteLine($"{client.LastName} {client.Name} is already our client");
         }
         public void ClientRemove(Client client)
         {
             if (Clients.Contains(client))
                 Clients.Remove(client);
+        }
+        public void ConnectBill(Client client, int bill)
+        {
+            if (Clients.Contains(client) && BankBills.ContainsKey(bill))
+            {
+                Clients[Clients.IndexOf(client)].PersonalBills.Add(bill, BankBills[bill]);
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"{client.Name} {client.LastName} does not our bank client on bill {bill} does not exist");
+                Console.ResetColor();
+            }
+        }
+        public void GetAllClients()
+        {
+            foreach (Client client in Clients)
+            {
+                Console.WriteLine($"{client.Name} {client.LastName} is in the our bank clients list");
+            }
+        }
+        public void GetAllBankBills()
+        {
+            foreach (Bill bill in BankBills.Values)
+            {
+                Console.WriteLine($"Bill# {bill.ID}\nBill persent : {bill.Persent}");
+            }
+        }
+        public void SetPercent(decimal newPercent, int bill)
+        {
+            BankBills[bill].ChangePersent(newPercent,KeyToChangePersent);
         }
     }
 }

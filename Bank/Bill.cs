@@ -8,29 +8,33 @@ namespace Bank
 {
     internal class Bill
     {
-        public float Persent { get; set; }
+        public int ID { get; }
+        public decimal Persent { get; private set; }
         public Money Money { get; set; }
 
-        public Transaction Transaction { get; set; }
+        public Transaction Transaction = new Transaction();
 
-        public Bill() 
+        public Bill(int iD) 
+        {            
+            ID = iD;
+        }
+        public void PutMoneyOnBalance(decimal amount)
         {
-            Transaction = new Transaction();
+            Transaction.PutMoneyOnBalance(this ,amount);
+        }
+        public void SendMoneyTo(Client fromThis, Client toThis, decimal howMuchToSend, int clientsBillID)
+        {
+            Transaction.SendMoneyFromTo(fromThis, toThis, howMuchToSend, ID, clientsBillID);
+
+        }
+        public void ShowBalanse()
+        {
+            Console.WriteLine($"{(decimal)Money} UAH.");
         }
 
-        public void SendMoneyTo(Bill otherBill, float howMuchToSend)
+        public void ChangePersent(decimal newPersent, string hawePermission)
         {
-            if (Money >= howMuchToSend)
-            {
-                otherBill.Money += howMuchToSend;
-                Money -= howMuchToSend;
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Not enough money on your balanse");
-                Console.ResetColor();
-            }
+            Persent = hawePermission == "h*J^~9:#1 @!D}_+Mh1 gh9|'G]/G1>(&@&/  L&p  s/1q()_=_{}d?w{]*-+D#@H)!" ? newPersent : Persent;
         }
 
     }

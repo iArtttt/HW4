@@ -8,18 +8,30 @@ namespace Bank
 {
     internal class Client
     {
-        public string Name { get; set; }
-        public string lastName { get; set; }
-        public List<Bill> Bills { get; set;}
-        Transaction PersonalTransactions;
-        
-        public Client()
+        public string Name { get; }
+        public string LastName { get; }
+        public Dictionary<int, Bill> PersonalBills { get; }
+
+        public Client(string name, string lastname)
         {
-            PersonalTransactions = new Transaction();
+            Name = name;
+            LastName = lastname;
+            PersonalBills = new Dictionary<int, Bill>();
         }
-        public void SS()
+        public void ShowMyBalanseOnTheBill(int billId)
         {
-            PersonalTransactions.ShowAllTransactions();
+            PersonalBills[billId].ShowBalanse();
+        }
+        public void ShowAllTransactions()
+        {
+            foreach (var bill in PersonalBills.Values)
+            {
+                Transaction.ShowAllTransactions(bill);
+            }
+        }
+        public void ShowLastTransactions(int bill)
+        {
+            Transaction.ShowLastTransactions(PersonalBills[bill]);
         }
     }
 }
