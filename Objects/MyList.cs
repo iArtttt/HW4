@@ -6,71 +6,67 @@ using System.Threading.Tasks;
 
 namespace Objects
 {
-    internal class MyList
+    internal class MyList : MyArray
     {
-        private uint _count = 0;
-        public int Count { get { return (int)_count; } }
-        public uint Capasity { get; private set; } = 10;
-        public object[] Arr; 
+        public uint Capasity { get { return _size; } }
         public MyList() 
         {
-            Arr = new object[Capasity];
+            Arr = new object[_size];
         } 
-        public MyList(uint startCapasity) 
+        public MyList(int startCapasity) 
         {
-            Capasity = startCapasity;
-            Arr = new object[Capasity];
+            _size = (uint)Math.Abs(startCapasity);
+            Arr = new object[_size];
         }
-        public void Add(object item)
-        {
-            if (Count + 1 > Capasity)
-            {
-                Capasity *= 2;
-                Arr = new object[Capasity];
-            }
-            Arr[_count++] = item;
-        }
+
         public void Insert(int index, object item)
         {
-            Arr[index] = item;
+            if (index < Count && index >= 0)
+                Arr[index] = item;
+            else { throw new IndexOutOfRangeException(); }
         }
         public int IndexOf(object item)
         {
             for (int i = 0; i < Count; i++)
             {
-                if (Arr[i] == item)
-                {
+                object obj = Arr[i];
+
+                if (obj.GetHashCode() == item.GetHashCode())
                     return i;
-                }
             }
             return -1;
         }
-        public bool Contains(object item)
-        {
-            for (int i = 0; i < Count; i++)
-            {
-                if (Arr[i] == item)
-                    return true;
-            }
-            return false;
-        }
+
         public void Remove(object obj)
         {
             for (int i = 0; i < Count; i++)
             {
-                if (Arr[i] == obj)
+                if (Arr[i].GetHashCode() == obj.GetHashCode())
                 {
                     Arr[i] = null;
+                    Arr = ForEach();
+                    _count--;
+                    return;
                 }
             }
         }
         public void RemoveAt(int index)
         {
-            Arr[index] = null;
+            if (index < Capasity && index >= 0) 
+            {
+                Arr[index] = null;
+                Arr = ForEach();
+                _count--;
+            }
+            else { throw new IndexOutOfRangeException(); }
         }
-        public void Clear()
+        public void Reverse()
         {
-            Arr = null;
+            int j = 0;
+            object[] arr = new object[_size];
+            for (int i = Count - 1; i >= 0; i--)
+                arr[j++] = Arr[i];
+            Arr = arr;
         }
     }
 }
