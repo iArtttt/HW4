@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 
 namespace Objects
 {
-    internal class MyArray
+    abstract class MyArray
     {
         protected uint _count = 0;
         public int Count { get { return (int)_count; } }
         protected object[] Arr;
         protected uint _size = 4;
-        public void Add(object item)
-        {
-            if (Count + 1 > _size)
-            {
-                _size *= 2;
-                Arr = ForEach();
-            }
-            Arr[_count++] = item;
-        }
-        public bool Contains(object item)
+        //public void Add(object item)
+        //{
+        //    if (Count + 1 > _size)
+        //    {
+        //        _size *= 2;
+        //        Arr = ForEach();
+        //    }
+        //    Arr[_count++] = item;
+        //}
+        public bool Contains(object obj)
         {
             for (int i = 0; i < Count; i++)
             {
-                if (Arr[i].GetHashCode() == item.GetHashCode())
+                if (Arr[i].GetHashCode() == obj.GetHashCode())
                     return true;
             }
             return false;
@@ -56,7 +56,7 @@ namespace Objects
                 else
                 { 
                     for (int j = i; j < Count - 1; j++)
-                        arr[j] = Arr[j+1];
+                        arr[j] = Arr[j + 1];
                     return arr;
                 }
             }

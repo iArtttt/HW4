@@ -18,7 +18,15 @@ namespace Objects
             _size = (uint)Math.Abs(startCapasity);
             Arr = new object[_size];
         }
-
+        public void Add(object item)
+        {
+            if (Count + 1 > _size)
+            {
+                _size *= 2;
+                Arr = ForEach();
+            }
+            Arr[_count++] = item;
+        }
         public void Insert(int index, object item)
         {
             if (index < Count && index >= 0)
