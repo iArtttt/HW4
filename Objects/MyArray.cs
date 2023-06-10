@@ -12,16 +12,7 @@ namespace Objects
         public int Count { get { return (int)_count; } }
         protected object[] Arr;
         protected uint _size = 4;
-        //public void Add(object item)
-        //{
-        //    if (Count + 1 > _size)
-        //    {
-        //        _size *= 2;
-        //        Arr = ForEach();
-        //    }
-        //    Arr[_count++] = item;
-        //}
-        public bool Contains(object obj)
+        public virtual bool Contains(object obj)
         {
             for (int i = 0; i < Count; i++)
             {
@@ -30,7 +21,7 @@ namespace Objects
             }
             return false;
         }
-        public object[] ToArray()
+        public virtual object[] ToArray()
         {
             object[] arr = new object[Count];
             
@@ -39,13 +30,13 @@ namespace Objects
 
             return arr;
         }
-        public void Clear()
+        public virtual void Clear()
         {
             for (uint i = 0; i < Count; i++)
                 Arr[i] = null;
             _count = 0;
         }
-        protected object[] ForEach()
+        protected virtual object[] ForEach()
         {
             object[] arr = new object[_size];
 
