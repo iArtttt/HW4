@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW4", "HW4\HW4.csproj", "{A5FDD720-941C-4187-9548-6630E7BE7DFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Turnip", "Turnip\Turnip.csproj", "{3E99A4CE-FF44-4CAC-9019-8FCD7798BBD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A5FDD720-941C-4187-9548-6630E7BE7DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5FDD720-941C-4187-9548-6630E7BE7DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5FDD720-941C-4187-9548-6630E7BE7DFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E99A4CE-FF44-4CAC-9019-8FCD7798BBD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E99A4CE-FF44-4CAC-9019-8FCD7798BBD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E99A4CE-FF44-4CAC-9019-8FCD7798BBD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E99A4CE-FF44-4CAC-9019-8FCD7798BBD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
