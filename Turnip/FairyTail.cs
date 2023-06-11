@@ -13,22 +13,18 @@ namespace Turnip
 {
     internal class FairyTail
     {
-        private Queue<Person> Persons { get; set; }
-        private int FullPower { get; set; } = 0;
+        public Queue<Person> Persons { get; private set; }
+        public int FullPower { get; private set; } = 0;
         public void DefaultStoryStart()
         {
 
-            Persons = new Queue<Person>(new List<Person>()
-            {
-                new GrandFather(),
-                new GrandMother(),
-                new GrandDaughter(),
-                new Dog(),
-                new Cat(),
-                new Mouse()
-
-            });
-            Persons.
+            Persons = new Queue<Person>();        
+            Persons.Enqueue(new GrandFather());
+            Persons.Enqueue(new GrandMother());
+            Persons.Enqueue(new GrandDaughter());
+            Persons.Enqueue(new Dog());
+            Persons.Enqueue(new Cat());
+            Persons.Enqueue(new Mouse());
             Plant plant = new Plant();
             Story(plant);
         }
