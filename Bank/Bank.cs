@@ -8,9 +8,9 @@ namespace Bank
 {
     internal class Bank
     {
-        private string KeyToChangePersent = "h*J^~9:#1 @!D}_+Mh1 gh9|'G]/G1>(&@&/  L&p  s/1q()_=_{}d?w{]*-+D#@H)!";
-        public readonly List<Client> Clients = new List<Client>();
-        private Dictionary<int, Bill> BankBills = new Dictionary<int, Bill>();
+        private const string KeyToChangePersent = "h*J^~9:#1 @!D}_+Mh1 gh9|'G]/G1>(&@&/  L&p  s/1q()_=_{}d?w{]*-+D#@H)!";
+        private List<Client> Clients = new List<Client>();
+        public readonly Dictionary<int, Bill> BankBills = new Dictionary<int, Bill>();
 
 
 

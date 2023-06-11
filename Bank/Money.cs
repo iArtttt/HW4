@@ -78,33 +78,25 @@ namespace Bank
         public static bool operator !=(Money money, Money money1) => !(money.UAH == money1.UAH && money.Penny == money1.Penny);
         public static bool operator > (Money money, Money money1)
         {
-            if (money.UAH > money1.UAH )
-                return true;
-            if ( money.UAH == money1.UAH && money.Penny > money1.Penny )
+            if (money.UAH > money1.UAH || (money.UAH == money1.UAH && money.Penny > money1.Penny))
                 return true;
             return false;
         }
         public static bool operator < (Money money, Money money1)
         {
-            if (money.UAH < money1.UAH)
-                return true;
-            if (money.UAH == money1.UAH && money.Penny < money1.Penny)
+            if (money.UAH < money1.UAH || (money.UAH == money1.UAH && money.Penny < money1.Penny))
                 return true;
             return false;
         }
         public static bool operator >= (Money money, Money money1)
         {
-            if (money.UAH >= money1.UAH)
-                return true;
-            if (money.UAH == money1.UAH && money.Penny >= money1.Penny)
+            if (money.UAH >= money1.UAH || (money.UAH == money1.UAH && money.Penny >= money1.Penny))
                 return true;
             return false;
         }
         public static bool operator <= (Money money, Money money1)
         {
-            if (money.UAH <= money1.UAH)
-                return true;
-            if (money.UAH == money1.UAH && money.Penny <= money1.Penny)
+            if (money.UAH <= money1.UAH || (money.UAH == money1.UAH && money.Penny <= money1.Penny))
                 return true;
             return false;
         }
@@ -112,18 +104,14 @@ namespace Bank
         {
             int b = (int)((money1 - (int)money1) * 100);
 
-            if (money.UAH >= (int)money1)
-                return true;
-            if (money.UAH == (int)money1 && money.Penny >= b)
+            if (money.UAH >= (int)money1 || (money.UAH == (int)money1 && money.Penny >= b))
                 return true;
             return false;
         }
         public static bool operator <= (Money money, decimal money1)
         {
             int b = (int)((money1 - (int)money1) * 100);
-            if (money.UAH <= (int)money1)
-                return true;
-            if (money.UAH == (int)money1 && money.Penny <= b)
+            if (money.UAH <= (int)money1 || (money.UAH == (int)money1 && money.Penny <= b))
                 return true;
             return false;
         }
