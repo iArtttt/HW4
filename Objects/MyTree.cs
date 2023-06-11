@@ -19,103 +19,86 @@ namespace Objects
                 Root = new MyTreeNode(item);
                 _count++;
             }
-            else          
-                SetPosition(item);
+            else if(!Contains(item))
+            {
+                SetPosition(Root, item);
+                _count++;
+            }     
            
         }
-        private void SetPosition(int item)
+        private MyTreeNode SetPosition(MyTreeNode current, int item)
         {
-
-            MyTreeNode current = Root;
-            while (current.Left != null && current.Right != null)
+            if(current == null)
+                return new MyTreeNode(item);
+            else
             {
                 if (current.Item > item)
-                {
-                    if (current.Left == null)
-                    {
-                        current.Left = new MyTreeNode(item, current);
-                        _count++;
-                    }
-                    else
-                        current = current.Left;
-                }
-                else if (current.Item < item)
-                {
-                    if (current.Right == null)
-                    {
-                        current.Right = new MyTreeNode(item, current);
-                        _count++;
-                    }
-                    else
-                        current = current.Right;
-                }
+                    current.Left = SetPosition(current.Left, item);
+                else
+                    current.Right = SetPosition(current.Right,item);
             }
-
-
-
-        }
-        public bool Contains(int item)
+            return current;
+        }        
+        public bool Contains(int item) => Contains(Root, item);
+        private bool Contains(MyTreeNode current, int item)
         {
-            if (Root != null)
+            if (current != null)
             {
-                MyTreeNode current = Root;
-                while (current.Left != null && current.Right != null)
-                {
-                    if (current.Item == item)
-                        return true;
-                    if (current.Item > item)
-                    {
-                        if (current.Left == null)
-                            return false;
-                        else
-                            current = current.Left;
-                    }
-                    else
-                    {
-                        if (current.Right == null)
-                            return false;
-                        else
-                            current = current.Right;
-                    }
-                }
+                if (current.Item == item)
+                    return true;
+                if (current.Item > item)
+                    return Contains(current.Left, item);
+                else    
+                    return Contains(current.Right, item);
             }
             return false;
         }
         public int[] ToArray()
         {
-            if (Root != null)
-            {
+            if (Root == null)
+                return null;
+            int i = 0;
+            int[] array = new int[Count];
+            array = ToArray(Root, array, ref i);
+            return array;
 
-                MyTreeNode current = Root;
-                int[] array = new int[Count];
-                while (current.Left != null)
-                    current = current.Left;
-                for (int i = 0; i < Count; i++)
-                {
-                    array[i] = current.Item;
-                    if(current.Right != null)
-                        current = current.Right;
-
-
-
-                }
-                
-
-
-
-
+        }
+        private int[] ToArray(MyTreeNode current, int[] ints, ref int i)
+        {
+            if (current != null)
+            {                
+                ints = ToArray(current.Left, ints, ref i);
+                ints[i++] = current.Item;
+                ints = ToArray(current.Right, ints, ref i);
             }
-            return null;
-
-
+            return ints;
         }
         public void Clear()
         {
-            Root.Right = null;
-            Root.Left = null;
+            Clear(Root);
             Root = null;
 
             _count = 0;
+        }
+        private void Clear(MyTreeNode current)
+        {
+            if (current != null)
+            {
+                Clear(current.Left);
+                current.Left = null;
+                Clear(current.Right);
+                current.Right = null;
+            }
+        }
+        public void PrintTree() => PrintTree(Root);
+        private void PrintTree(MyTreeNode current)
+        {
+            if (current != null)
+            {
+                PrintTree(current.Left);
+                Console.WriteLine(current.Item);
+                PrintTree(current.Right);
+            }
         }
     }
 }

@@ -8,7 +8,6 @@ namespace Objects
 {
     internal class MyTreeNode
     {
-        public MyTreeNode? Parent;
         public MyTreeNode? Left;
         public MyTreeNode? Right;
         public int Item;
@@ -17,11 +16,5 @@ namespace Objects
         {
             Item = item;
         }
-        public MyTreeNode(int item, MyTreeNode? parent)
-        {
-            Item = item;
-            Parent = parent;
-        }
-
     }
 }
