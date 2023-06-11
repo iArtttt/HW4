@@ -28,6 +28,7 @@ namespace Turnip
                 new Mouse()
 
             });
+            Persons.
             Plant plant = new Plant();
             Story(plant);
         }
