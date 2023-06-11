@@ -7,7 +7,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Objects
 {
-    internal class MyLinkedList //: MyArray
+    internal class MyLinkedList
     {
         private int _count = 0;
         internal MyLinkedListNode? _head;
