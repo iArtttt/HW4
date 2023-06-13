@@ -8,13 +8,13 @@ namespace Objects
 {
     internal class MyOneWayLinkedList 
     {
-        private int _count = 0;
+        protected int _count = 0;
         internal MyOneWayLinkedListNode? _head;
         public int Count { get { return _count; } }
         public MyOneWayLinkedListNode? First { get { return _head; } }
         public MyOneWayLinkedListNode? Last { get; private set; }
 
-        public void Add(object item)
+        public virtual void Add(object item)
         {
             if (_head == null)
             {
@@ -34,7 +34,7 @@ namespace Objects
                 _count++;
             }
         }
-        public void AddFirst(object item)
+        public virtual void AddFirst(object item)
         {
             if (_head == null)
             {
@@ -49,7 +49,7 @@ namespace Objects
                 _count++;
             }
         }
-        public void Insert(int index, object item)
+        public virtual void Insert(int index, object item)
         {
             if (_head == null)
             {
@@ -68,7 +68,7 @@ namespace Objects
                 _count++;
             }
         }
-        public bool Contains(object obj)
+        public virtual bool Contains(object obj)
         {
             if (_head != null)
             {
@@ -82,7 +82,7 @@ namespace Objects
             }
             return false;
         }
-        public object[] ToArray()
+        public virtual object[] ToArray()
         {
             if (_head != null)
             {
@@ -97,7 +97,7 @@ namespace Objects
             }
             return null;
         }
-        public void Clear()
+        public virtual void Clear()
         {
             MyOneWayLinkedListNode? current = _head;
             while (current != null)

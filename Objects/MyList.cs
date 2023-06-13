@@ -30,7 +30,21 @@ namespace Objects
         public void Insert(int index, object item)
         {
             if (index < Count && index >= 0)
-                Arr[index] = item;
+            {
+                if (Count + 1 > _size)
+                {
+                    _size *= 2;
+                    Arr = ForEach();
+                }
+                object temp = Arr[index];
+                for (int i = index; i < Count+1; i++)
+                {
+                    temp = Arr[i];
+                    Arr[i] = item;
+                    item = temp;
+                }
+                _count++;
+            }
             else { throw new IndexOutOfRangeException(); }
         }
         public int IndexOf(object item)

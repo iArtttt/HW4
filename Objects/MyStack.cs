@@ -8,33 +8,35 @@ namespace Objects
 {
     internal class MyStack : MyArray
     {
+        public new int Count { get { return arr.Count; } }
+
+        private readonly MyList arr;
         public MyStack()
         {
-            Arr = new object[_size];
+            arr = new MyList();
         }
-        public void Push(object obj)
-        {
-            if (Count + 1 > _size)
-            {
-                _size *= 2;
-                Arr = ForEach();
-            }
-            Arr[_count++] = obj;
-        }
+        public void Push(object obj) => arr.Add(obj);
+
         public object Pop()
         {
-            if (_count > 0)
+            if (arr.Count > 0)
             {
-                object obj = Arr[_count - 1];
-                Arr[_count - 1] = null;
-                _count--;
+                object obj = arr.Arr[arr.Count - 1];
+                arr.RemoveAt(arr.Count - 1);
                 return obj;
             }
             return null;
         }
+
         public object Peek()
         {
-            return Arr[_count - 1];
+            if (arr.Count > 0) return arr.Arr[arr.Count - 1];
+            return null;
         }
+        public override bool Contains(object obj) => arr.Contains(obj);
+
+        public override object[] ToArray() => arr.ToArray();
+
+        public override void Clear() => arr.Clear();
     }
 }

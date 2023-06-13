@@ -10,7 +10,7 @@ namespace Objects
     {
         public MyTreeNode? Left;
         public MyTreeNode? Right;
-        public int Item;
+        public int Item { get; private set; }
         
         public MyTreeNode(int item)
         {

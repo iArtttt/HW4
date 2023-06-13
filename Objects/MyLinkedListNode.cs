@@ -10,22 +10,22 @@ namespace Objects
     {
         public MyLinkedListNode? Next { get; set; }
         public MyLinkedListNode? Preveouse { get; set; }
-        internal object item;
+        internal object Item { get; private set; }
 
         public MyLinkedListNode(object obj)
         {
-            item = obj;
+            Item = obj;
         }
         public MyLinkedListNode(MyLinkedListNode preveouse, object obj)
         {
             Preveouse = preveouse;
-            item = obj;
+            Item = obj;
         }
         public MyLinkedListNode(MyLinkedListNode preveouse, MyLinkedListNode next, object obj)
         {
             Next = next;
             Preveouse = preveouse;
-            item = obj;
+            Item = obj;
         }
 
     }

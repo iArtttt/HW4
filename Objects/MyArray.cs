@@ -10,17 +10,19 @@ namespace Objects
     {
         protected uint _count = 0;
         public int Count { get { return (int)_count; } }
-        protected object[] Arr;
+        public object[] Arr { get; protected set; }
         protected uint _size = 4;
+
         public virtual bool Contains(object obj)
         {
             for (int i = 0; i < Count; i++)
             {
-                if (Arr[i].GetHashCode() == obj.GetHashCode())
+                if (Arr[i].Equals(obj))
                     return true;
             }
             return false;
         }
+
         public virtual object[] ToArray()
         {
             object[] arr = new object[Count];
@@ -30,12 +32,14 @@ namespace Objects
 
             return arr;
         }
+
         public virtual void Clear()
         {
             for (uint i = 0; i < Count; i++)
                 Arr[i] = null;
             _count = 0;
         }
+
         protected virtual object[] ForEach()
         {
             object[] arr = new object[_size];

@@ -7,33 +7,38 @@ using System.Threading.Tasks;
 namespace Objects
 {
     internal class MyQueue : MyArray
-    {        
+    {
+        public new int Count { get { return arr.Count; } }
+
+        private readonly MyList arr;
         public MyQueue()
         {
-            Arr = new object[_size];
+            arr = new MyList();
         }
-        public void Enqueue(object obj)
-        {
-            if (Count + 1 > _size)
-            {
-                _size *= 2;
-                Arr = ForEach();
-            }
-            Arr[_count++] = obj;
-        }
+        public void Enqueue(object obj) => arr.Add(obj);
+
         public object Dequeue()
         {
-            object obj = Arr[0];
-            Arr[0] = null;
-            Arr = ForEach();
-            _count--;
-            return obj;
-        }
-        public object Peek()
-        {
-            return Arr[0];
+            if (arr.Count > 0)
+            {
+                object obj = arr.Arr[0];
+                arr.RemoveAt(0);
+                return obj;
+            }
+            return null;
         }
 
+        public object Peek()
+        {
+            if (arr.Count > 0) return arr.Arr[arr.Count - 1];
+            return null;
+        }
+
+        public override bool Contains(object obj) => arr.Contains(obj);
+
+        public override object[] ToArray() => arr.ToArray();
+
+        public override void Clear() => arr.Clear();
 
     }
 }

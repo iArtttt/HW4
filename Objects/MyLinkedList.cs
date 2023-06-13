@@ -7,15 +7,13 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Objects
 {
-    internal class MyLinkedList
+    internal class MyLinkedList : MyOneWayLinkedList
     {
-        private int _count = 0;
-        internal MyLinkedListNode? _head;
-        public int Count { get { return _count; } }
-        public MyLinkedListNode? First { get { return _head; } }
-        public MyLinkedListNode? Last { get; private set; }
+        internal new MyLinkedListNode? _head;
+        public new MyLinkedListNode? First { get { return _head; } }
+        public new MyLinkedListNode? Last { get; private set; }
 
-        public void Add(object item)
+        public new void Add(object item)
         {
             if (_head == null)
             {
@@ -35,7 +33,8 @@ namespace Objects
                 _count++;
             }
         }
-        public void AddFirst(object item)
+
+        public override void AddFirst(object item)
         {
             if (_head == null)
             {
@@ -51,7 +50,8 @@ namespace Objects
                 _count++;
             }
         }
-        public void Insert(int index, object item)
+
+        public override void Insert(int index, object item)
         {
             if (_head == null)
             {
@@ -71,6 +71,7 @@ namespace Objects
                 _count++;
             }
         }
+
         public void Remove(object item)
         {
             if (_head != null)
@@ -78,7 +79,7 @@ namespace Objects
                 MyLinkedListNode? current = _head;
                 for (int i = 0; i < Count; i++)
                 {
-                    if (current.item.GetHashCode() == item.GetHashCode())
+                    if (current.Item.GetHashCode() == item.GetHashCode())
                     {
                         if (current == _head)
                             RemoveFirst();
@@ -87,7 +88,6 @@ namespace Objects
                         else
                         {
                             current.Preveouse.Next = current.Next.Preveouse;
-                            current.item = null;
                             current.Next = null;
                             current.Preveouse = null;
                             _count--;
@@ -102,7 +102,6 @@ namespace Objects
             if (_head != null)
             {
                 _head.Next.Preveouse = null;
-                _head.item = null;
                 _head = _head.Next;
                 _count--;
             }
@@ -112,26 +111,27 @@ namespace Objects
             if (_head != null)
             {
                 Last.Preveouse.Next = null;
-                Last.item = null;
                 Last = Last.Preveouse;
                 _count--;
             }
         }
-        public bool Contains(object obj)
+
+        public override bool Contains(object obj)
         {
             if (_head != null)
             {
                 MyLinkedListNode? current = _head;
                 for (int i = 0; i < Count; i++)
                 {
-                    if (current.item.GetHashCode() == obj.GetHashCode())
+                    if (current.Item.GetHashCode() == obj.GetHashCode())
                         return true;
                     current = current.Next;
                 }
             }
             return false;
         }
-        public object[] ToArray()
+
+        public override object[] ToArray()
         {
             if (_head != null)
             {
@@ -139,14 +139,15 @@ namespace Objects
                 MyLinkedListNode? current = _head;
                 for (int i = 0; i < Count; i++)
                 {
-                    Arr[i] = current.item;
+                    Arr[i] = current.Item;
                     current = current.Next;
                 }
                 return Arr;
             }
             return null;
         }
-        public void Clear()
+
+        public override void Clear()
         {
             MyLinkedListNode? current = _head;
             while(current != null)
@@ -159,7 +160,6 @@ namespace Objects
             _head = null;
             Last = null;
             _count = 0;
-            //GC.Collect();
         }
     }
 }

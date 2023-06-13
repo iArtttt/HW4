@@ -26,6 +26,7 @@ namespace Objects
             }     
            
         }
+
         private MyTreeNode SetPosition(MyTreeNode current, int item)
         {
             if(current == null)
@@ -53,44 +54,36 @@ namespace Objects
             }
             return false;
         }
+
         public int[] ToArray()
         {
             if (Root == null)
                 return null;
             int i = 0;
             int[] array = new int[Count];
-            array = ToArray(Root, array, ref i);
+            ToArray(Root, array, ref i);
             return array;
 
         }
-        private int[] ToArray(MyTreeNode current, int[] ints, ref int i)
+
+        private void ToArray(MyTreeNode current, int[] ints, ref int i)
         {
             if (current != null)
             {                
-                ints = ToArray(current.Left, ints, ref i);
+                ToArray(current.Left, ints, ref i);
                 ints[i++] = current.Item;
-                ints = ToArray(current.Right, ints, ref i);
+                ToArray(current.Right, ints, ref i);
             }
-            return ints;
         }
+
         public void Clear()
         {
-            Clear(Root);
             Root = null;
-
             _count = 0;
         }
-        private void Clear(MyTreeNode current)
-        {
-            if (current != null)
-            {
-                Clear(current.Left);
-                current.Left = null;
-                Clear(current.Right);
-                current.Right = null;
-            }
-        }
+
         public void PrintTree() => PrintTree(Root);
+
         private void PrintTree(MyTreeNode current)
         {
             if (current != null)
